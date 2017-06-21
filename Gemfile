@@ -1,4 +1,7 @@
 source 'https://rubygems.org'
 
-gem "trailblazer-operation"
+gem "trailblazer"
+gem "activerecord"
+gem "sqlite3"
 gem "rspec"
+gem "dry-validation"
