@@ -2,7 +2,7 @@ require "spec_helper"
 require_relative "../../../../lib/railway_eng/entities/blog_post"
 require_relative "../../../../lib/railway_eng/entities/user"
 require_relative "../../../../lib/railway_eng/persistence/repositories/blog_post_repo"
-require_relative "../../../../app/concepts/blog_post/operation/create"
+require_relative "../../../../lib/railway_eng/concepts/blog_post/operation/create"
 
 RSpec.describe BlogPost::Create do
   include ImportMain["blog_post_repo"]
