@@ -1,11 +1,14 @@
 require "spec_helper"
-require_relative "../../../../app/models/user"
-require_relative "../../../../app/models/blog_post"
+require_relative "../../../../lib/railway_eng/entities/blog_post"
+require_relative "../../../../lib/railway_eng/entities/user"
+require_relative "../../../../lib/railway_eng/persistence/repositories/blog_post_repo"
 require_relative "../../../../app/concepts/blog_post/operation/create"
 
 RSpec.describe BlogPost::Create do
-  let (:anonymous) { User.new(false) }
-  let (:signed_in) { User.new(true) }
+  include ImportMain["blog_post_repo"]
+
+  let (:anonymous) { RailwayEng::Entities::User.new(signed_in: false) }
+  let (:signed_in) { RailwayEng::Entities::User.new(signed_in: true) }
   let (:pass_params) { { blog_post: { title: "Puns: Ode to Joy" } } }
 
   it "fails with anonymous" do
@@ -22,7 +25,7 @@ RSpec.describe BlogPost::Create do
       "current_user" => signed_in
     )
     expect(result).to be_success
-    expect(result["model"]).to be_persisted
+    expect(blog_post_repo.persisted?(result["model"])).to eq(true)
     expect(result["model"].title).to eq("Puns: Ode to Joy")
   end
 
