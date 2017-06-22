@@ -9,7 +9,11 @@ RSpec.describe BlogPost::Create do
 
   let (:anonymous) { RailwayEng::Entities::User.new(signed_in: false) }
   let (:signed_in) { RailwayEng::Entities::User.new(signed_in: true) }
-  let (:pass_params) { { blog_post: { title: "Puns: Ode to Joy" } } }
+  let (:pass_params) { { blog_post: {
+    title: "Puns: Ode to Joy",
+    body: "",
+    author: "Author",
+  } } }
 
   it "fails with anonymous" do
     result = BlogPost::Create.(pass_params, "current_user" => anonymous)
@@ -20,10 +24,7 @@ RSpec.describe BlogPost::Create do
   end
 
   it "works with known user" do
-    result = BlogPost::Create.(
-      { blog_post: { title: "Puns: Ode to Joy", body: "" } },
-      "current_user" => signed_in
-    )
+    result = BlogPost::Create.(pass_params, "current_user" => signed_in)
     expect(result).to be_success
     expect(blog_post_repo.persisted?(result["model"])).to eq(true)
     expect(result["model"].title).to eq("Puns: Ode to Joy")
