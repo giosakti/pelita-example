@@ -9,6 +9,13 @@ module RailwayEng
         def persisted?(record)
           !record.id.nil?
         end
+
+        def [](id)
+          blog_posts
+            .by_pk(id)
+            .as(Entities::BlogPost)
+            .one!
+        end
       end
     end
   end
