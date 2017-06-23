@@ -6,7 +6,6 @@ gem "sqlite3"
 gem "rom"
 gem "rom-repository"
 gem "rom-sql"
-# gem "rom-rails"
 
 # Type & Validation
 gem "dry-types"
@@ -16,13 +15,19 @@ gem "dry-validation"
 # Business Logic
 gem "dry-transaction"
 
-# IoC
+# System
 gem "dry-container"
 gem "dry-auto_inject"
+gem "dry-configurable"
+gem "dry-system"
+
+# Web
+gem "roda"
+gem "rack-protection"
+gem "rack_csrf"
 
 # Misc
-gem "dry-monads"
-gem "dry-configurable"
+gem "bcrypt"
 
 # Testing
 gem "rspec"

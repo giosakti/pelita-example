@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    bcrypt (3.1.11)
     concurrent-ruby (1.0.5)
     diff-lcs (1.3)
     dry-auto_inject (0.4.3)
@@ -28,6 +29,13 @@ GEM
       dry-equalizer (~> 0.2)
       dry-types (~> 0.9, >= 0.9.0)
       ice_nine (~> 0.11)
+    dry-system (0.7.1)
+      concurrent-ruby (~> 1.0)
+      dry-auto_inject (>= 0.4.0)
+      dry-configurable (~> 0.7, >= 0.7.0)
+      dry-container (~> 0.6)
+      dry-equalizer (~> 0.2)
+      inflecto (>= 0.0.2)
     dry-transaction (0.10.0)
       dry-container (>= 0.2.8)
       dry-matcher (>= 0.5.0)
@@ -50,6 +58,13 @@ GEM
       dry-types (~> 0.9, >= 0.9.0)
     ice_nine (0.11.2)
     inflecto (0.0.2)
+    rack (2.0.3)
+    rack-protection (2.0.0)
+      rack
+    rack_csrf (2.6.0)
+      rack (>= 1.1.0)
+    roda (2.27.0)
+      rack
     rom (3.2.3)
       concurrent-ruby (~> 1.0)
       dry-core (~> 0.3)
@@ -94,14 +109,18 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcrypt
   dry-auto_inject
   dry-configurable
   dry-container
-  dry-monads
   dry-struct
+  dry-system
   dry-transaction
   dry-types
   dry-validation
+  rack-protection
+  rack_csrf
+  roda
   rom
   rom-repository
   rom-sql
