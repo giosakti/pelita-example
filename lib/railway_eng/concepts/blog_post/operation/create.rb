@@ -7,8 +7,8 @@ class BlogPost::Create < Trailblazer::Operation
   step Policy::Guard( :authorize! )
   step :model!
   # TODO: @giosakti maybe reform isn't the best option for this
-  step Contract::Build( constant: BlogPost::Contract::Create )
-  step Contract::Validate( key: :blog_post )
+  step :build!
+  step :validate!
   step :persist!
   step :notify!
 
@@ -18,6 +18,15 @@ class BlogPost::Create < Trailblazer::Operation
 
   def model!(options, params:, **)
     options["model"] = RailwayEng::Entities::BlogPost.new(params[:blog_post])
+  end
+
+  def build!(options, **)
+    options["result.contract.default"] = BlogPost::Contract::Create.new(options["model"])
+  end
+
+  def validate!(options, params:, **)
+    reform_contract = options["result.contract.default"]
+    result = reform_contract.validate(params || {})
   end
 
   def persist!(options, params:, model:, **)
