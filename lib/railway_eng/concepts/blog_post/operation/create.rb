@@ -1,28 +1,37 @@
-class BlogPost::Create < Trailblazer::Operation
+class BlogPost::Create
+  include Dry::Transaction
+  include BaseOperation
   include ImportMain["blog_post_repo"]
 
-  step Policy::Guard( :authorize! )
+  step :config!
+  step :authorize!
   step :validate!
-  step :persist!
+  try :persist!, catch: StandardError
   step :notify!
 
-  def authorize!(options, current_user:, **)
-    current_user.signed_in?
+  # dry-transaction does not allow arguments to be passed on the
+  # DSL steps. Add extra step instead and pass arguments via options
+  def config!(options)
+    Right(options)
   end
 
-  def validate!(options, params:, **)
+  def validate!(options)
+    params = options["params"]
     result = BlogPost::Contract::Create.call(params[:blog_post])
     options["result.contract.default"] = result
-    result.success?
+
+    result.success? ? Right(options) : Left(options)
   end
 
-  def persist!(options, params:, **)
+  def persist!(options)
+    params = options["params"]
     options["model"] = RailwayEng::Entities::BlogPost.new(params[:blog_post])
     options["model"] = blog_post_repo.create(options["model"])
+    options
   end
 
-  def notify!(options, current_user:, model:, **)
+  def notify!(options)
     # BlogPost::Notification.(current_user, model)
-    true
+    Right(options)
   end
 end

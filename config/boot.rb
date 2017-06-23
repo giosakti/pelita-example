@@ -2,9 +2,11 @@ require 'dry-auto_inject'
 require 'dry-types'
 require 'dry-struct'
 require 'dry-validation'
+require 'dry-transaction'
 require 'rom'
 require 'rom-repository'
-require 'trailblazer'
+
+require_relative '../lib/base_operation'
 
 # Setup storage adapter
 adapter = ROM.container(:sql, 'sqlite::memory') do |conf|

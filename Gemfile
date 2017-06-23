@@ -14,7 +14,6 @@ gem "dry-struct"
 gem "dry-validation"
 
 # Business Logic
-gem "trailblazer"
 gem "dry-transaction"
 
 # IoC
