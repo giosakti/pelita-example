@@ -5,9 +5,6 @@ class BlogPost::Create < Trailblazer::Operation
   include ImportMain["blog_post_repo"]
 
   step Policy::Guard( :authorize! )
-  step :model!
-  # TODO: @giosakti maybe reform isn't the best option for this
-  step :build!
   step :validate!
   step :persist!
   step :notify!
@@ -16,20 +13,14 @@ class BlogPost::Create < Trailblazer::Operation
     current_user.signed_in?
   end
 
-  def model!(options, params:, **)
-    options["model"] = RailwayEng::Entities::BlogPost.new(params[:blog_post])
-  end
-
-  def build!(options, **)
-    options["result.contract.default"] = BlogPost::Contract::Create.new(options["model"])
-  end
-
   def validate!(options, params:, **)
-    reform_contract = options["result.contract.default"]
-    result = reform_contract.validate(params || {})
+    result = BlogPost::Contract::Create.call(params[:blog_post])
+    options["result.contract.default"] = result
+    result.success?
   end
 
   def persist!(options, params:, **)
+    options["model"] = RailwayEng::Entities::BlogPost.new(params[:blog_post])
     options["model"] = blog_post_repo.create(options["model"])
   end
 

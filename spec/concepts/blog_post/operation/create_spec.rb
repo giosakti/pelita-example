@@ -11,7 +11,7 @@ RSpec.describe BlogPost::Create do
   let (:signed_in) { RailwayEng::Entities::User.new(signed_in: true) }
   let (:pass_params) { { blog_post: {
     title: "Puns: Ode to Joy",
-    body: "",
+    body: "La La La La La La La La La La La La La LaLa",
     author: "Author",
   } } }
 
@@ -33,6 +33,7 @@ RSpec.describe BlogPost::Create do
   it "fails with missing input" do
     result = BlogPost::Create.({}, "current_user" => signed_in)
     expect(result).to be_failure
+    expect(result["result.contract.default"]).to be_failure
   end
 
   it "fails with body too short" do
@@ -42,7 +43,8 @@ RSpec.describe BlogPost::Create do
     )
 
     expect(result).to be_failure
-    expect(result["result.contract.default"].errors.messages).to eq(
+    expect(result["result.contract.default"]).to be_failure
+    expect(result["result.contract.default"].errors).to eq(
       {:body => ["size cannot be less than 9"]} )
   end
 end
