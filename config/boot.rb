@@ -7,6 +7,7 @@ require 'rom'
 require 'rom-repository'
 
 require_relative '../lib/base_operation'
+require_relative '../lib/attempt_adapter'
 
 # Setup storage adapter
 adapter = ROM.container(:sql, 'sqlite::memory') do |conf|

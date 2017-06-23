@@ -6,7 +6,7 @@ class BlogPost::Create
   step :config!
   step :authorize!
   step :validate!
-  try :persist!, catch: StandardError
+  attempt :persist!, catch: StandardError
   step :notify!
 
   # dry-transaction does not allow arguments to be passed on the
@@ -27,7 +27,7 @@ class BlogPost::Create
     params = options["params"]
     options["model"] = RailwayEng::Entities::BlogPost.new(params[:blog_post])
     options["model"] = blog_post_repo.create(options["model"])
-    options
+    Right(options)
   end
 
   def notify!(options)
