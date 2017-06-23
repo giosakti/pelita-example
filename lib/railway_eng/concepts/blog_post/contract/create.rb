@@ -1,5 +1,3 @@
-require "dry-validation"
-
 module BlogPost
   module Contract
     Create = Dry::Validation.Schema do

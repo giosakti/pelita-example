@@ -1,11 +1,10 @@
 require 'dry-auto_inject'
+require 'dry-types'
+require 'dry-struct'
+require 'dry-validation'
 require 'rom'
-
-[
-  '../../lib/railway_eng/persistence/repositories/**/*.rb',
-].each do |path|
-  Dir[File.expand_path(path, __FILE__)].each { |file| require file }
-end
+require 'rom-repository'
+require 'trailblazer'
 
 # Setup storage adapter
 adapter = ROM.container(:sql, 'sqlite::memory') do |conf|
@@ -17,10 +16,27 @@ adapter = ROM.container(:sql, 'sqlite::memory') do |conf|
   end
 end
 
-# Setup IoC Container
+# Initialize IoC container
 main_container = Dry::Container.new
+
+## Register repositories
+[
+  '../../lib/railway_eng/persistence/repositories/**/*.rb',
+].each do |path|
+  Dir[File.expand_path(path, __FILE__)].each { |file| require file }
+end
+
 main_container.register(:adapter, adapter)
 main_container.register(:blog_post_repo,
   RailwayEng::Persistence::Repositories::BlogPostRepo.new(adapter)
 )
+
+# Make IoC container available
 ImportMain = Dry::AutoInject(main_container)
+
+# Boot other components
+[
+  '../../lib/railway_eng/**/*.rb',
+].each do |path|
+  Dir[File.expand_path(path, __FILE__)].each { |file| require file }
+end

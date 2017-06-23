@@ -1,6 +1,3 @@
-require "trailblazer"
-require_relative "../contract/create"
-
 class BlogPost::Create < Trailblazer::Operation
   include ImportMain["blog_post_repo"]
 

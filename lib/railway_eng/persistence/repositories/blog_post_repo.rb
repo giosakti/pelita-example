@@ -1,5 +1,3 @@
-require 'rom-repository'
-
 module RailwayEng
   module Persistence
     module Repositories

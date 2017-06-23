@@ -1,6 +1,3 @@
-require "dry-types"
-require "dry-struct"
-
 module RailwayEng
   module Entities
     module Types
