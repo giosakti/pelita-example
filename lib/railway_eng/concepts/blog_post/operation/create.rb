@@ -29,8 +29,8 @@ class BlogPost::Create < Trailblazer::Operation
     result = reform_contract.validate(params || {})
   end
 
-  def persist!(options, params:, model:, **)
-    options["model"] = blog_post_repo.create(params[:blog_post])
+  def persist!(options, params:, **)
+    options["model"] = blog_post_repo.create(options["model"])
   end
 
   def notify!(options, current_user:, model:, **)
