@@ -1,5 +1,5 @@
 module RailwayEng
-  module Entities
+  module Entity
     module Types
       include Dry::Types.module
     end

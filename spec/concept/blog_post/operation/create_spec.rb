@@ -1,12 +1,12 @@
 require "spec_helper"
 
 module RailwayEng
-  module Concepts
+  module Concept
     RSpec.describe BlogPost::Create do
       include ImportMain["blog_post_repo"]
 
-      let (:anonymous) { Entities::User.new(signed_in: false) }
-      let (:signed_in) { Entities::User.new(signed_in: true) }
+      let (:anonymous) { Entity::User.new(signed_in: false) }
+      let (:signed_in) { Entity::User.new(signed_in: true) }
       let (:pass_params) { { blog_post: {
         title: "Puns: Ode to Joy",
         body: "La La La La La La La La La La La La La LaLa",

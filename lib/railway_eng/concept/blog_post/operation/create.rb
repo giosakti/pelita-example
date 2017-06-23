@@ -1,5 +1,5 @@
 module RailwayEng
-  module Concepts
+  module Concept
     class BlogPost::Create
       include Dry::Transaction
       include BaseOperation
@@ -27,7 +27,7 @@ module RailwayEng
 
       def persist!(options)
         params = options["params"]
-        options["model"] = Entities::BlogPost.new(params[:blog_post])
+        options["model"] = Entity::BlogPost.new(params[:blog_post])
         options["model"] = blog_post_repo.create(options["model"])
         Right(options)
       end

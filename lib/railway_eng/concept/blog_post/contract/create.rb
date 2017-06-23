@@ -1,5 +1,5 @@
 module RailwayEng
-  module Concepts
+  module Concept
     module BlogPost
       module Contract
         Create = Dry::Validation.Schema do

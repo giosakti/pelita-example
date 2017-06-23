@@ -1,6 +1,6 @@
 module RailwayEng
   module Persistence
-    module Repositories
+    module Repository
       class BlogPostRepo < ROM::Repository[:blog_posts]
         commands :create, update: :by_pk, delete: :by_pk
 
@@ -11,7 +11,7 @@ module RailwayEng
         def [](id)
           blog_posts
             .by_pk(id)
-            .as(Entities::BlogPost)
+            .as(Entity::BlogPost)
             .one!
         end
       end

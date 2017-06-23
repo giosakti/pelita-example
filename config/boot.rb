@@ -24,14 +24,14 @@ main_container = Dry::Container.new
 
 ## Register repositories
 [
-  '../../lib/railway_eng/persistence/repositories/**/*.rb',
+  '../../lib/railway_eng/persistence/repository/**/*.rb',
 ].each do |path|
   Dir[File.expand_path(path, __FILE__)].each { |file| require file }
 end
 
 main_container.register(:adapter, adapter)
 main_container.register(:blog_post_repo,
-  RailwayEng::Persistence::Repositories::BlogPostRepo.new(adapter)
+  RailwayEng::Persistence::Repository::BlogPostRepo.new(adapter)
 )
 
 # Make IoC container available
