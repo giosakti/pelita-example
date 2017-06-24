@@ -1,9 +1,11 @@
+require 'import'
+
 module RailwayEng
   module Concept
     class BlogPost::Create
       include Dry::Transaction
       include BaseOperation
-      include ImportMain["blog_post_repo"]
+      include Import["blog_post_repo"]
 
       step :config!
       step :authorize!
