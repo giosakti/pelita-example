@@ -1,3 +1,3 @@
-require "rspec"
+require 'rspec'
 
-require_relative "../system/boot"
+require_relative '../system/boot'
