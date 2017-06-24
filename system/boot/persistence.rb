@@ -3,12 +3,7 @@ module RopExample
     init do
       # Setup primary database
       db = ::ROM.container(:sql, 'sqlite::memory') do |conf|
-        conf.default.create_table(:blog_posts) do
-          primary_key :id
-          column :title, String, null: false
-          column :body, String
-          column :author, String
-        end
+        # NOP
       end
       container.register(:db, db)
 

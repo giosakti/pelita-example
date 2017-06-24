@@ -28,6 +28,7 @@ gem "rack_csrf"
 
 # Misc
 gem "bcrypt"
+gem "rake"
 
 # Testing
 gem "rspec"
