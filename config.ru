@@ -1,4 +1,4 @@
 # ./config.ru
 
-require_relative 'boot'
-run Application.app
+require_relative 'system/boot'
+run RopExample::Application.app

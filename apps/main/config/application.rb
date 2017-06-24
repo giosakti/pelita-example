@@ -5,7 +5,7 @@ module Main
     plugin :csrf
     plugin :multi_route
 
-    ::Application.run 'main', Main::Application
+    RopExample::Application.run 'main', Main::Application
 
     # Load controllers
     Dir[File.expand_path('../../web/controllers/**/*.rb', __FILE__)].each { |f| require f }
