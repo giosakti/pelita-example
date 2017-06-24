@@ -1,13 +1,5 @@
-require 'bcrypt'
-require 'dry-auto_inject'
-require 'dry-types'
-require 'dry-struct'
-require 'dry-validation'
-require 'dry-transaction'
-require 'rom'
-require 'rom-repository'
-require 'rack/protection'
-require 'roda'
+require 'bundler'
+Bundler.require
 
 require_relative 'lib/base_operation'
 require_relative 'lib/attempt_adapter'
@@ -47,14 +39,10 @@ ImportMain = Dry::AutoInject(main_container)
   Dir[File.expand_path(path, __FILE__)].each { |file| require file }
 end
 
-class Application < Roda
-  use Rack::Session::Cookie, secret: "e52cc08a0ffbd0f4e68f705106f9a827be32681c42a2df89d12ea2fddd83790a6ebeb19acf06b946198b54cf653afe03218850f2ab79ac8d74d649395341f0eb", key: "_application_session"
-  use Rack::Protection
-  plugin :csrf
+require_relative 'config/application'
 
-  route do |r|
-    r.root do
-      "Hello!"
-    end
-  end
+# Load sub-apps
+app_paths = Pathname(__FILE__).dirname.join("apps").realpath.join("*")
+Dir[app_paths].each do |f|
+  require "#{f}/boot"
 end
