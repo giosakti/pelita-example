@@ -1,0 +1,29 @@
+development:
+  adapter: <%= ENV['DEV_DB_ADAPTER'] %>
+  encoding: unicode
+  host: <%= ENV['DEV_DB_HOST'] %>
+  port: <%= ENV['DEV_DB_PORT'].to_i %>
+  database: <%= ENV['DEV_DB_NAME'] %>
+  pool: <%= ENV['DEV_DB_POOL'].to_i %>
+  username: <%= ENV['DEV_DB_USER'] %>
+  password: <%= ENV['DEV_DB_PASS'] %>
+
+test:
+  adapter: <%= ENV['TEST_DB_ADAPTER'] %>
+  encoding: unicode
+  host: <%= ENV['TEST_DB_HOST'] %>
+  port: <%= ENV['TEST_DB_PORT'].to_i %>
+  database: <%= ENV['TEST_DB_NAME'] %>
+  pool: <%= ENV['TEST_DB_POOL'].to_i %>
+  username: <%= ENV['TEST_DB_USER'] %>
+  password: <%= ENV['TEST_DB_PASS'] %>
+
+production:
+  adapter: <%= ENV['PROD_DB_ADAPTER'] %>
+  encoding: unicode
+  host: <%= ENV['PROD_DB_HOST'] %>
+  port: <%= ENV['PROD_DB_PORT'].to_i %>
+  database: <%= ENV['PROD_DB_NAME'] %>
+  pool: <%= ENV['PROD_DB_POOL'].to_i %>
+  username: <%= ENV['PROD_DB_USER'] %>
+  password: <%= ENV['PROD_DB_PASS'] %>
