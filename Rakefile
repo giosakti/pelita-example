@@ -1,4 +1,5 @@
 # ./Rakefile
+require 'dotenv/tasks'
 
 #!/usr/bin/env rake
 task :app do

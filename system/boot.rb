@@ -1,6 +1,8 @@
 require 'bundler/setup'
 Bundler.require
 
+require 'dotenv/load'
+
 # Load root app
 require_relative 'application'
 
