@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/giosakti/pelita
-  revision: 93472eff188b60d850b477533c741f2ed1e827b4
+  revision: 7839ab826b35227f98094dc1f36443aa2b2fc466
   branch: master
   specs:
     pelita (0.1.0)
