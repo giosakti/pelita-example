@@ -1,6 +1,7 @@
 require 'bundler/setup'
 Bundler.require
 
+# Load environment variables
 require 'dotenv/load'
 
 # Load root app

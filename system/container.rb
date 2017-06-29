@@ -1,7 +1,5 @@
-require 'dry/system/container'
-
 module RopExample
-  class Container < Dry::System::Container
+  class Container < Pelita::Container
     configure do |config|
     end
   end

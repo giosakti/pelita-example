@@ -2,7 +2,7 @@ require 'import'
 
 module RailwayEng
   module Concept
-    class BlogPost::Create < Pelita::Operation
+    class BlogPost::Create < Pelita::Operation::Base
       include Import["blog_post_repo"]
 
       step :config!
