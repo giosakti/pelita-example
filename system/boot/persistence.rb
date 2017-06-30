@@ -14,14 +14,9 @@ module PelitaExample
       db = ::ROM.container(:sql, conn_string) do |conf|
         # NOP
       end
-      container.register(:db, db)
 
-      # Load all repositories
-      [
-        RailwayEng::Persistence::Repository::BlogPostRepo,
-      ].each do |repo|
-        container.register(repo.to_s.split('::').last.to_snake_case.to_sym, repo.new(db))
-      end
+      # Register db on the container
+      container.register(:db, db)
     end
 
     start do
