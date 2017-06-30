@@ -1,8 +1,34 @@
+GIT
+  remote: https://github.com/giosakti/pelita
+  revision: f165f5d7f3ac082f3af8cf7cc9295d72f5f4fb2e
+  branch: master
+  specs:
+    pelita (0.1.0)
+      bcrypt (~> 3.1)
+      dotenv (~> 2.2)
+      dry-auto_inject (~> 0.4)
+      dry-configurable (~> 0.7)
+      dry-container (~> 0.6)
+      dry-struct (~> 0.3)
+      dry-system (~> 0.7)
+      dry-transaction (~> 0.10)
+      dry-types (~> 0.10)
+      dry-validation (~> 0.10)
+      rack-protection (~> 2.0)
+      rack_csrf (~> 2.6)
+      rake (~> 12.0)
+      roda (~> 2.27)
+      rom (~> 3.2)
+      rom-repository (~> 1.3)
+      rom-sql (~> 1.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
+    bcrypt (3.1.11)
     concurrent-ruby (1.0.5)
     diff-lcs (1.3)
+    dotenv (2.2.1)
     dry-auto_inject (0.4.3)
       dry-container (>= 0.3.4)
     dry-configurable (0.7.0)
@@ -28,6 +54,13 @@ GEM
       dry-equalizer (~> 0.2)
       dry-types (~> 0.9, >= 0.9.0)
       ice_nine (~> 0.11)
+    dry-system (0.7.1)
+      concurrent-ruby (~> 1.0)
+      dry-auto_inject (>= 0.4.0)
+      dry-configurable (~> 0.7, >= 0.7.0)
+      dry-container (~> 0.6)
+      dry-equalizer (~> 0.2)
+      inflecto (>= 0.0.2)
     dry-transaction (0.10.0)
       dry-container (>= 0.2.8)
       dry-matcher (>= 0.5.0)
@@ -50,6 +83,15 @@ GEM
       dry-types (~> 0.9, >= 0.9.0)
     ice_nine (0.11.2)
     inflecto (0.0.2)
+    pg (0.21.0)
+    rack (2.0.3)
+    rack-protection (2.0.0)
+      rack
+    rack_csrf (2.6.0)
+      rack (>= 1.1.0)
+    rake (12.0.0)
+    roda (2.27.0)
+      rack
     rom (3.2.3)
       concurrent-ruby (~> 1.0)
       dry-core (~> 0.3)
@@ -94,17 +136,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  dry-auto_inject
-  dry-configurable
-  dry-container
-  dry-monads
-  dry-struct
-  dry-transaction
-  dry-types
-  dry-validation
-  rom
-  rom-repository
-  rom-sql
+  pelita!
+  pg
   rspec
   sqlite3
 

@@ -1,28 +1,11 @@
 source 'https://rubygems.org'
 
 gem "sqlite3"
+gem "pg"
 
-# ORM
-gem "rom"
-gem "rom-repository"
-gem "rom-sql"
-# gem "rom-rails"
-
-# Type & Validation
-gem "dry-types"
-gem "dry-struct"
-gem "dry-validation"
-
-# Business Logic
-gem "dry-transaction"
-
-# IoC
-gem "dry-container"
-gem "dry-auto_inject"
-
-# Misc
-gem "dry-monads"
-gem "dry-configurable"
+gem 'pelita',
+  :git => 'https://github.com/giosakti/pelita',
+  :branch => 'master'
 
 # Testing
 gem "rspec"

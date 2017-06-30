@@ -1,9 +1,9 @@
-require "spec_helper"
+require 'spec_helper'
 
 module RailwayEng
   module Concept
     RSpec.describe BlogPost::Create do
-      include ImportMain["blog_post_repo"]
+      include Import["blog_post_repo"]
 
       let (:anonymous) { Entity::User.new(signed_in: false) }
       let (:signed_in) { Entity::User.new(signed_in: true) }
