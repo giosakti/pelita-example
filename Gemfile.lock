@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/giosakti/pelita
-  revision: f165f5d7f3ac082f3af8cf7cc9295d72f5f4fb2e
+  revision: a7ce1918d9414ebf73b4fc4c4cda3beaccec9a22
   branch: master
   specs:
     pelita (0.1.0)
@@ -61,7 +61,7 @@ GEM
       dry-container (~> 0.6)
       dry-equalizer (~> 0.2)
       inflecto (>= 0.0.2)
-    dry-transaction (0.10.0)
+    dry-transaction (0.10.1)
       dry-container (>= 0.2.8)
       dry-matcher (>= 0.5.0)
       dry-monads (>= 0.0.1)

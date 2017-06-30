@@ -1,4 +1,4 @@
-module RopExample
+module PelitaExample
   Container.finalize(:persistence) do |container|
     init do
       # Load db configuration

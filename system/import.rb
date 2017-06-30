@@ -1,3 +1,3 @@
 require_relative 'container'
 
-Import = RopExample::Container.injector
+Import = PelitaExample::Container.injector

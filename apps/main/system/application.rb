@@ -6,7 +6,7 @@ module Main
     plugin :multi_route
 
     # Register this app into root application
-    RopExample::Application.run 'main', Main::Application
+    PelitaExample::Application.run 'main', Main::Application
 
     # Load controllers
     Dir[File.expand_path('../../web/controllers/**/*.rb', __FILE__)].each { |f| require f }

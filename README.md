@@ -1,10 +1,3 @@
-# Railway Oriented Programming (ROP) Proof-of-concept
+# Pelita Example
 
-This is a proof-of-concept for Railway Oriented Programming (ROP), using:
-
-- dry-rb suites
-- rom-rb
-- trailblazer*
-- test using rspec
-
-Please use `ruby-2.4.1` and run the test using `rspec spec` command.
+This is an example on usage of Pelita microframework. See [this repo](https://github.com/giosakti/pelita) for detail.

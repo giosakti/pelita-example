@@ -1,4 +1,4 @@
-module RopExample
+module PelitaExample
   class Application < Pelita::Application
     # Setup container
     require_relative 'container'
@@ -8,6 +8,6 @@ module RopExample
 
     # Finalize container setup
     setting :container, Container
-    RopExample::Container.finalize!
+    PelitaExample::Container.finalize!
   end
 end
