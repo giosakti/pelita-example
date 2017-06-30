@@ -48,7 +48,7 @@ GEM
     dry-monads (0.3.1)
       dry-core
       dry-equalizer
-    dry-struct (0.3.0)
+    dry-struct (0.3.1)
       dry-configurable (~> 0.1)
       dry-core (~> 0.3)
       dry-equalizer (~> 0.2)
