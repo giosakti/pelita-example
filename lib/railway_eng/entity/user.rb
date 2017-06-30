@@ -4,9 +4,7 @@ module RailwayEng
       include Dry::Types.module
     end
 
-    class User < Dry::Struct
-      constructor_type :schema
-
+    class User < Pelita::Entity::Base
       attribute :id, Types::Strict::Int
       attribute :username, Types::Strict::String
       attribute :signed_in, Types::Strict::Bool

@@ -1,7 +1,7 @@
 module RailwayEng
   module Persistence
     module Repository
-      class BlogPostRepo < ROM::Repository[:blog_posts]
+      class BlogPostRepo < Pelita::Repository::Base[:blog_posts]
         commands :create, update: :by_pk, delete: :by_pk
 
         def persisted?(record)
