@@ -1,5 +1,5 @@
 module PelitaExample
-  class Application < Pelita::Application
+  class Application < Pelita::Application::Base
     # Setup container
     require_relative 'container'
     setting :container, Container

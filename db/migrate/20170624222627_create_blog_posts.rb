@@ -1,4 +1,4 @@
-ROM::SQL.migration do
+Pelita::SQL.migration do
   change do
     create_table(:blog_posts) do
       primary_key :id

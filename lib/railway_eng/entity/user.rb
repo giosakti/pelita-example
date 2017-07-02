@@ -1,7 +1,7 @@
 module RailwayEng
   module Entity
     module Types
-      include Dry::Types.module
+      include Pelita::Types.module
     end
 
     class User < Pelita::Entity::Base

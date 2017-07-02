@@ -11,7 +11,7 @@ module PelitaExample
       conn_string = Application.generate_connection_string(db_config)
 
       # Initiate db connection
-      db = ::ROM.container(:sql, conn_string) do |conf|
+      db = ::Pelita::Persistence.container(:sql, conn_string) do |conf|
         # NOP
       end
 
